@@ -724,8 +724,7 @@ Function SaveRemoteFile(LocalFileName,RemoteFileUrl)
 	LocalFileName=server.MapPath(LocalFileName)
 	C_LocalFileName=LocalFileName
 	call creatfolder(C_LocalFileName)   '创建目录
-    response.Write("<br>&nbsp;Downning: "&RemoteFileUrl)
-    response.Flush()
+
 If not IsFileExist(LocalFileName) then
 dim Ads,Retrieval,GetRemoteData
 Set Retrieval = Server.CreateObject("Microsoft.XMLHTTP")
@@ -1372,9 +1371,10 @@ Dim T_mgs,U_mgs
     titles=replace(titles,"\","_")
     titles=replace(titles,"/","_")
     Ntitles= SaveMenu&"\"&names&"\"&titles
-    response.Write "<br>&nbsp;&nbsp;完成采集:" &urlces
-	response.Write "<br>&nbsp;&nbsp;正保存文件... "&Ntitles&"."&F_mgs
-	response.Flush()
+    response.Write "<br>&nbsp;&nbsp;完成采集:"   &urlces
+	response.Write "<br>&nbsp;&nbsp;Save Ok!... "&Ntitles&"."&F_mgs
+    response.Write("<br>&nbsp;&nbsp;Downning: <a href='"&RemoteFileUrl&"' target=_blank>"&RemoteFileUrl&"</a>")
+    response.Flush()
 	SaveRemoteFile "./"&Ntitles&"."&F_mgs,mgs
 	
     imgurl=""
